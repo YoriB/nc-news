@@ -5,14 +5,14 @@ const articlesAPI = axios.create({
 })
 
 
-const getArticlesApi = () => {
+export const getArticlesApi = () => {
   return articlesAPI.get('/articles').then(({data}) => {
     return data;
   })
 
 };
 
-export default getArticlesApi;
+
 
 
 
