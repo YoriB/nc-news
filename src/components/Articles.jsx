@@ -34,7 +34,7 @@ return (
       <Link to={`/article/${article.article_id}`}>{article.title}</Link>
     </h2>   
     <img src={article.article_img_url} alt={article.title} ></img>     
-    <h3>{article.body}</h3>
+    <h3>{(article.body.length <= 20)? article.body : article.body.split(' ').slice(0, 20).join(' ')}</h3>
     <p>Number of Comments: {article.comment_count}</p>
     <p>Likes : {article.votes }</p>
     <button>Like</button>
