@@ -1,10 +1,18 @@
 import axios from 'axios';
 
-// axios.get(`https://yoris-nc-news.onrender.com/api/articles`)
-// .then(({data}) => {
-//    return setArticles(data);
-// });
+const articlesAPI = axios.create({
+  baseURL : 'https://yoris-nc-news.onrender.com/api/'
+})
 
+
+const getArticlesApi = () => {
+  return articlesAPI.get('/articles').then(({data}) => {
+    return data;
+  })
+
+};
+
+export default getArticlesApi;
 
 
 

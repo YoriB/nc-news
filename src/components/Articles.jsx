@@ -1,6 +1,6 @@
  import {useParams} from 'react-router-dom'; 
 import { useState, useEffect } from 'react';
-import {getArticles } from '../utils/api';
+import getArticlesApi from '../utils/api';
 import axios from 'axios';
 import '../App.css';
 import {Link} from 'react-router-dom';
@@ -8,14 +8,14 @@ import {Link} from 'react-router-dom';
 
 const Articles = () => { 
   const [articles, setArticles] = useState([]); 
-  const [isLoading, setIsLoading] = useState(false);   
+  const [isLoading, setIsLoading] = useState(true);   
   
     useEffect(() => {
-      setIsLoading(true)
-  axios.get(`https://yoris-nc-news.onrender.com/api/articles`)
-      .then(({data}) => {       
-         setArticles(data);
-         setIsLoading(false);
+    
+      getArticlesApi().then((articlesFromApi) => {
+        setIsLoading(false);
+      setArticles(articlesFromApi);
+     
       });
     },[])
 
@@ -34,9 +34,9 @@ return (
       <Link to={`/article/${article.article_id}`}>{article.title}</Link>
     </h2>   
     <img src={article.article_img_url} alt={article.title} ></img>     
-    <h3>{article.body}</h3>
-    <p>Number of Comments: {article.comment_count}</p>
-    <p>Likes : {article.votes }</p>
+    <p >{article.body}</p>
+    <p>Comments: {article.comment_count}</p>
+    <p> Likes : {article.votes }</p>
     <button>Like</button>
     </li>
     )
