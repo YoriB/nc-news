@@ -28,7 +28,7 @@ const Articles = () => {
     <ul className="">
       {articles.map((article) => {
 return (
-  <li className = "articlecount" key={article.article_id}>
+  <li className = "article count" key={article.article_id}>
     <h2>
       <Link to={`/article/${article.article_id}`}>{article.title}</Link>
     </h2>   
