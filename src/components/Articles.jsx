@@ -20,7 +20,7 @@ const Articles = () => {
     },[])
 
     if (isLoading) {
-      return <h2>LOADING...</h2>;
+      return<p>LOADING...</p>;
     }
   
   return (
