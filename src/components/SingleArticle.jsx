@@ -1,18 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleByIdApi } from '../utils/api';
+import {Link} from 'react-router-dom';
 
-const SingleArticle = () => {
-  const { article_id } = useParams();
+
+
+const SingleArticle = () => {  
+const {article_id}  = useParams();
 
   const [singleArticle, setSingleArticle] = useState({});
 
   useEffect(() => {
-    getArticleByIdApi(article_id).then((articleFromApiById) => {
-      setSingleArticle(articleFromApiById);
+    
+  getArticleByIdApi(article_id).then((articleFromApiById) => { 
+    
+        setSingleArticle(articleFromApiById);
     });
-  }, [article_id]);
-  console.log(singleArticle.article_id);
+  },[article_id]);
+  
 
   return (
   <section>
@@ -23,18 +28,14 @@ const SingleArticle = () => {
           src={singleArticle.article_img_url}
           alt={singleArticle.title}
         ></img>
-        <p>
-          {singleArticle.body.length <= 30
-            ? singleArticle.body
-            : singleArticle.body
-                .split(' ')
-                .slice(0, 30)
-                .join(' ')
-                .concat('......')}
-        </p>
-        <p>Comments: {singleArticle.comment_count}</p>
-        <p> Likes : {singleArticle.votes}</p>
-        <button>Like</button>
+  <p>
+  {singleArticle.body}
+  </p>
+  <p>{singleArticle.author}</p>
+  <p>{singleArticle.created_at}</p>
+  <p id='body-paragraph'> <Link to={`/articles/${singleArticle.article_id}/comments`}>Comments</Link></p>
+<p> Likes : {singleArticle.votes}</p>
+<button>Like</button>
 
   </section>
  );

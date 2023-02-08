@@ -1,7 +1,5 @@
- import {useParams} from 'react-router-dom'; 
-import { useState, useEffect } from 'react';
+ import { useState, useEffect } from 'react';
 import {getArticlesApi} from '../utils/api';
-import axios from 'axios';
 import '../App.css';
 import {Link} from 'react-router-dom';
 
@@ -30,7 +28,7 @@ const Articles = () => {
 return (
   <li className = "article count" key={article.article_id}>
     <h2>
-      <Link to={`/article/${article.article_id}`}>{article.title}</Link>
+      <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
     </h2>   
     <img src={article.article_img_url} alt={article.title} ></img>     
     <p >{(article.body.length <= 30)? article.body : article.body.split(' ').slice(0, 30).join(' ').concat('......')}</p>
