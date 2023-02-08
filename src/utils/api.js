@@ -11,8 +11,11 @@ export const getArticlesApi = () => {
 };
 
 export const getArticleByIdApi = (article_id) => {
+ console.log(article_id);
 return articlesAPI.get(`/articles/${article_id}`).then(({ data }) => {
-
+console.log(data);
 return data;
   });
 };
+
+

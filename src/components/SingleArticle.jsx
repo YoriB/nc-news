@@ -6,23 +6,15 @@ import {Link} from 'react-router-dom';
 
 
 const SingleArticle = () => {  
-const {article_id}  = useParams();
-
+const {article_id}  = useParams()
   const [singleArticle, setSingleArticle] = useState({});
 
-  useEffect(() => {
-    if (article_id === singleArticle.article_id) { 
+  useEffect(() => {      
+  getArticleByIdApi(article_id).then((articleFromApiById) => {     
+        setSingleArticle(articleFromApiById);   
      
-  getArticleByIdApi(article_id).then((articleFromApiById) => {   
-    
-        setSingleArticle(articleFromApiById);
-  
-    });
-  }
-  
-  
-  },[article_id]);
-
+    });  
+  },[]);
 
 
 
