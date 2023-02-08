@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleByIdApi } from '../utils/api';
 import {Link} from 'react-router-dom';
-
-
+import Comments from './Comments';
 
 
 const SingleArticle = () => {  
 const {article_id}  = useParams();
+console.log(article_id);
 
   const [singleArticle, setSingleArticle] = useState({});
 
@@ -35,6 +35,7 @@ const {article_id}  = useParams();
   <p id='body-paragraph'> <Link to={`/articles/${singleArticle.article_id}/comments`}>Comments</Link></p>
  
 <p> Likes : {singleArticle.votes}</p>
+<Comments singleArticleID={article_id} />
 <button>Like</button>
 
   </section>

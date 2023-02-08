@@ -18,8 +18,9 @@ return data;
 };
 
 
-// export const getCommentsByArticleIdApi = (article_id) => {
-//   return articlesAPI.get(`/articles/${article_id}/comments`).then(({ data }) => {
-//    return data;
-//   })
-// }
+export const getCommentsByArticleIdApi = (article_id) => {
+  return articlesAPI.get(`/articles/${article_id}/comments`).then(({ data }) => {
+   
+   return data;
+  })
+}
