@@ -11,13 +11,20 @@ const {article_id}  = useParams();
   const [singleArticle, setSingleArticle] = useState({});
 
   useEffect(() => {
-    
-  getArticleByIdApi(article_id).then((articleFromApiById) => { 
+    if (article_id === singleArticle.article_id) { 
+     
+  getArticleByIdApi(article_id).then((articleFromApiById) => {   
     
         setSingleArticle(articleFromApiById);
-    });
-  },[article_id]);
   
+    });
+  }
+  
+  
+  },[article_id]);
+
+
+
 
   return (
   <section>
