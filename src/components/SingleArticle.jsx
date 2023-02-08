@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleByIdApi } from '../utils/api';
@@ -42,3 +43,4 @@ const {article_id}  = useParams();
 };
 
 export default SingleArticle;
+

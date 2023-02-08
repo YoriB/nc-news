@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 
 const Articles = () => { 
   const [articles, setArticles] = useState([]); 
+
   const [isLoading, setIsLoading] = useState(true);   
   
     useEffect(() => {    
@@ -13,6 +14,16 @@ const Articles = () => {
         setIsLoading(false);
       setArticles(articlesFromApi);
      
+
+  const [isLoading, setIsLoading] = useState(false);   
+  
+    useEffect(() => {
+      setIsLoading(true)
+  axios.get(`https://yoris-nc-news.onrender.com/api/articles`)
+      .then(({data}) => {       
+         setArticles(data);
+         setIsLoading(false);
+
       });
     },[])
 
@@ -34,6 +45,7 @@ return (
     <p >{(article.body.length <= 30)? article.body : article.body.split(' ').slice(0, 30).join(' ').concat('......')}</p>
     <p>Comments: {article.comment_count}</p>
     <p> Likes  :  {article.votes }</p>
+
     <button>Like</button>
     </li>
     )
