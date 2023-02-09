@@ -6,16 +6,16 @@ import Comments from './Comments';
 
 
 const SingleArticle = () => {  
-const {article_id}  = useParams();
-
+const {article_id}  = useParams()
   const [singleArticle, setSingleArticle] = useState({});
 
-  useEffect(() => {    
-  getArticleByIdApi(article_id).then((articleFromApiById) => {    
-        setSingleArticle(articleFromApiById);
-    });
-  },[article_id]);
-  
+  useEffect(() => {      
+  getArticleByIdApi(article_id).then((articleFromApiById) => {     
+        setSingleArticle(articleFromApiById);   
+     
+    });  
+  },[]);
+
 
   return (
   <section>
@@ -31,14 +31,13 @@ const {article_id}  = useParams();
   </p>
   <p>{singleArticle.author}</p>
   <p>{singleArticle.created_at}</p>
+
   <p id='body-paragraph'> <Link to={`/articles/${singleArticle.article_id}/comments`}>Comments</Link></p>
  
 <p> Likes : {singleArticle.votes}</p>
 <button>Like</button>
 
-
 <Comments singleArticleID={article_id} />
-
   </section>
  );
 };
