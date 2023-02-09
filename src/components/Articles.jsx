@@ -6,13 +6,13 @@ import {Link} from 'react-router-dom';
 
 const Articles = () => { 
   const [articles, setArticles] = useState([]); 
+
   const [isLoading, setIsLoading] = useState(true);   
   
     useEffect(() => {    
       getArticlesApi().then((articlesFromApi) => {
         setIsLoading(false);
       setArticles(articlesFromApi);
-     
       });
     },[])
 
@@ -20,7 +20,7 @@ const Articles = () => {
       return<p>LOADING...</p>;
     }
   
-  return (
+return (
   <section>
     <h2>LIST OF ARTICLES</h2>
     <ul className="">
