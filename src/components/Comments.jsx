@@ -27,7 +27,7 @@ return (
 <p>{comment.body}</p>
 <p>{comment.created_at}</p>
 
-<button>Like</button><span> {comment.votes} </span><button>Unlike</button>
+<button>Like</button><span> Likes : {comment.votes} </span><button>Unlike</button>
 </li>
 )
 })}
