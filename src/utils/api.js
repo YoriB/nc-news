@@ -6,6 +6,7 @@ const articlesAPI = axios.create({
 
 export const getArticlesApi = () => {
   return articlesAPI.get('/articles').then(({ data }) => {
+    console.log(data);
     return data;
   });
 };
@@ -18,9 +19,16 @@ return data;
 };
 
 
-export const getCommentsByArticleIdApi = (article_id) => {
+export const getComments = (article_id) => {
   return articlesAPI.get(`/articles/${article_id}/comments`).then(({ data }) => {
    
    return data;
   })
 }
+
+
+export const patchArticleApi = (article_id, votes) => {
+  const patchData = { votes : votes }
+
+return articlesAPI.patch(`/articles/${article_id}`, patchData)
+};

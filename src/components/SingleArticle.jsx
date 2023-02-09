@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { getArticleByIdApi } from '../utils/api';
 import {Link} from 'react-router-dom';
 import Comments from './Comments';
+import Votes from './Votes';
+const dayjs = require('dayjs')
 
 
 const SingleArticle = () => {  
@@ -10,17 +12,20 @@ const {article_id}  = useParams();
 
   const [singleArticle, setSingleArticle] = useState({});
 
-  useEffect(() => {    
-  getArticleByIdApi(article_id).then((articleFromApiById) => {    
-        setSingleArticle(articleFromApiById);
+  useEffect(() => {   
+     
+  getArticleByIdApi(article_id).then((articleFromApiById) => {   
+    setSingleArticle(articleFromApiById);     
     });
   },[article_id]);
   
+const date = dayjs(singleArticle.created_at).format('MMMM DD YYYY, hh:mm:ss a');
+
 
   return (
   <section>
         <h2>
-            {singleArticle.title}
+    {singleArticle.title}
         </h2>
         <img
           src={singleArticle.article_img_url}
@@ -30,13 +35,12 @@ const {article_id}  = useParams();
   {singleArticle.body}
   </p>
   <p>{singleArticle.author}</p>
-  <p>{singleArticle.created_at}</p>
-  <p id='body-paragraph'> <Link to={`/articles/${singleArticle.article_id}/comments`}>Comments</Link></p>
- 
-<p> Likes : {singleArticle.votes}</p>
-<button>Like</button>
+  <p>{date}</p>
+  <p id='body-paragraph'> <Link to={`/articles/${singleArticle.article_id}/comments`}>Comments</Link></p> 
 
 
+
+<Votes votes={singleArticle.votes}/>
 <Comments singleArticleID={article_id} />
 
   </section>

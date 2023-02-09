@@ -6,13 +6,13 @@ import {Link} from 'react-router-dom';
 
 const Articles = () => { 
   const [articles, setArticles] = useState([]); 
+
   const [isLoading, setIsLoading] = useState(true);   
   
     useEffect(() => {    
       getArticlesApi().then((articlesFromApi) => {
         setIsLoading(false);
       setArticles(articlesFromApi);
-     
       });
     },[])
 
@@ -20,7 +20,7 @@ const Articles = () => {
       return<p>LOADING...</p>;
     }
   
-  return (
+return (
   <section>
     <h2>LIST OF ARTICLES</h2>
     <ul className="">
@@ -33,8 +33,7 @@ return (
     <img src={article.article_img_url} alt={article.title} ></img>     
     <p >{(article.body.length <= 30)? article.body : article.body.split(' ').slice(0, 30).join(' ').concat('......')}</p>
     <p>Comments: {article.comment_count}</p>
-    <p> Likes  :  {article.votes }</p>
-    <button>Like</button>
+    <p> Likes  :  {article.votes }</p>    
     </li>
     )
 })}

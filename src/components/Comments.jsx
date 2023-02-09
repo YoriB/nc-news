@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import '../App.css';
-import { getCommentsByArticleIdApi } from '../utils/api';
+import { getComments } from '../utils/api';
+const dayjs = require('dayjs')
 
 const Comments =({singleArticleID}) => {
   
@@ -9,11 +10,13 @@ const Comments =({singleArticleID}) => {
 
   useEffect(() => {
     if (singleArticleID) {
-    getCommentsByArticleIdApi(singleArticleID).then((CommentsFromArticleById) => {     
-      setComments(CommentsFromArticleById);    
+    getComments(singleArticleID).then((CommentsFromArticle) => {     
+      setComments(CommentsFromArticle);    
   });
 }
 },[]);
+
+
   
   return (
 <section>
@@ -21,13 +24,15 @@ const Comments =({singleArticleID}) => {
 
 <ul className="">
       {comments.map((comment) => {
+          
+const date = dayjs(comment.created_at).format('MMMM DD YYYY, hh:mm:ss a');
 return (
   <li className = "comment-box" key={comment.comment_id}>
 <p>{comment.author}</p>
 <p>{comment.body}</p>
-<p>{comment.created_at}</p>
+<p>{date}</p>
 
-<button>Like</button><span> Likes : {comment.votes} </span><button>Unlike</button>
+<button>Like</button><span> {comment.votes} </span><button>Unlike</button>
 </li>
 )
 })}
