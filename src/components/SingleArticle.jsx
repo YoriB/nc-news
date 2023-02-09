@@ -7,7 +7,6 @@ import Comments from './Comments';
 
 const SingleArticle = () => {  
 const {article_id}  = useParams();
-console.log(article_id);
 
   const [singleArticle, setSingleArticle] = useState({});
 
@@ -35,8 +34,10 @@ console.log(article_id);
   <p id='body-paragraph'> <Link to={`/articles/${singleArticle.article_id}/comments`}>Comments</Link></p>
  
 <p> Likes : {singleArticle.votes}</p>
-<Comments singleArticleID={article_id} />
 <button>Like</button>
+
+
+<Comments singleArticleID={article_id} />
 
   </section>
  );
