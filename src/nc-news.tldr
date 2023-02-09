@@ -424,11 +424,11 @@
             "parentId": "page",
             "childIndex": 20,
             "point": [
-              107,
+              127.5,
               503
             ],
             "rotation": 0,
-            "text": "Comments_comment",
+            "text": "Comments_count",
             "style": {
               "color": "black",
               "size": "small",
