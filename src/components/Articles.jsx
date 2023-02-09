@@ -1,21 +1,18 @@
- import {useParams} from 'react-router-dom'; 
-import { useState, useEffect } from 'react';
-import {getArticles } from '../utils/api';
-import axios from 'axios';
+ import { useState, useEffect } from 'react';
+import {getArticlesApi} from '../utils/api';
 import '../App.css';
 import {Link} from 'react-router-dom';
 
 
 const Articles = () => { 
   const [articles, setArticles] = useState([]); 
-  const [isLoading, setIsLoading] = useState(false);   
+  const [isLoading, setIsLoading] = useState(true);   
   
-    useEffect(() => {
-      setIsLoading(true)
-  axios.get(`https://yoris-nc-news.onrender.com/api/articles`)
-      .then(({data}) => {       
-         setArticles(data);
-         setIsLoading(false);
+    useEffect(() => {    
+      getArticlesApi().then((articlesFromApi) => {
+        setIsLoading(false);
+      setArticles(articlesFromApi);
+     
       });
     },[])
 
@@ -29,14 +26,14 @@ const Articles = () => {
     <ul className="">
       {articles.map((article) => {
 return (
-  <li className = "articlecount" key={article.article_id}>
+  <li className = "article count" key={article.article_id}>
     <h2>
-      <Link to={`/article/${article.article_id}`}>{article.title}</Link>
+      <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
     </h2>   
     <img src={article.article_img_url} alt={article.title} ></img>     
-    <h3>{(article.body.length <= 30)? article.body : article.body.split(' ').slice(0, 30).join(' ').concat('......')}</h3>
-    <p>Number of Comments: {article.comment_count}</p>
-    <p>Likes : {article.votes }</p>
+    <p >{(article.body.length <= 30)? article.body : article.body.split(' ').slice(0, 30).join(' ').concat('......')}</p>
+    <p>Comments: {article.comment_count}</p>
+    <p> Likes  :  {article.votes }</p>
     <button>Like</button>
     </li>
     )

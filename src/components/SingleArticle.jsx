@@ -1,23 +1,43 @@
-// import axios from 'axios';
-// import { useEffect, useState } from 'react';
-// import {useParams} from 'react-router-dom'
-
-// const SingleArticle = () => {
-//   const {article_id} = useParams();
-//   const [singleArticle, setSingleArticle] = useState({});
-
-//   useEffect(()=> {
-//     axios.get(`https://yoris-nc-news.onrender.com/api/articles/${article_id}`)
-//     .then((data)=> {
-//   })
-// },[])
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getArticleByIdApi } from '../utils/api';
+import {Link} from 'react-router-dom';
 
 
 
+const SingleArticle = () => {  
+const {article_id}  = useParams()
+  const [singleArticle, setSingleArticle] = useState({});
 
-// return (
-//   <section>SingleArticle</section>
-// )
-// }
+  useEffect(() => {      
+  getArticleByIdApi(article_id).then((articleFromApiById) => {     
+        setSingleArticle(articleFromApiById);   
+     
+    });  
+  },[]);
 
-// export default SingleArticle;
+
+
+  return (
+  <section>
+        <h2>
+            {singleArticle.title}
+        </h2>
+        <img
+          src={singleArticle.article_img_url}
+          alt={singleArticle.title}
+        ></img>
+  <p>
+  {singleArticle.body}
+  </p>
+  <p>{singleArticle.author}</p>
+  <p>{singleArticle.created_at}</p>
+  <p id='body'> <Link to={`/articles/${singleArticle.article_id}/comments`}>Comments</Link></p>
+<p> Likes : {singleArticle.votes}</p>
+<button>Like</button>
+
+  </section>
+ );
+};
+
+export default SingleArticle;

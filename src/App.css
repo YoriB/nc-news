@@ -5,3 +5,8 @@
 li {
   list-style-type : none;
 }
+
+.body-paragraph {
+  font-size: 18px;
+  text-align: left;  
+}
