@@ -6,8 +6,9 @@ const Votes =({votes, singleArticleID}) => {
 
 const incVotes = () => {
   setVoteChange((currChange) => currChange + 1);
-
+  
   patchArticleApi(singleArticleID, 1);
+
 }
 
 const decVotes = () => {

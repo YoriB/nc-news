@@ -39,7 +39,7 @@ const date = dayjs(singleArticle.created_at).format('MMMM DD YYYY, hh:mm:ss a');
 
 
 
-<Votes votes={singleArticle.votes}/>
+<Votes votes={singleArticle.votes}  singleArticleID = {article_id}/>
 <Comments singleArticleID={article_id} />
   </section>
  );
