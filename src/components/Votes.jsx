@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { patchArticleApi } from "../utils/api";
 
-const Votes =({votes, singleArticleID}) => {
+const Votes =({votes, singleArticleID}) => { 
+ 
   const [voteChange, setVoteChange] = useState(0);
 
 const incVotes = () => {
@@ -15,8 +16,6 @@ const decVotes = () => {
 
   patchArticleApi(singleArticleID, -1);
 }
-
-
 
 return (
   <div>

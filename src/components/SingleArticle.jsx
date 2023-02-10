@@ -4,6 +4,7 @@ import { getArticleByIdApi } from '../utils/api';
 import {Link} from 'react-router-dom';
 import Comments from './Comments';
 import Votes from './Votes';
+import PostComments from './PostComments';
 const dayjs = require('dayjs')
 
 
@@ -37,10 +38,13 @@ const date = dayjs(singleArticle.created_at).format('MMMM DD YYYY, hh:mm:ss a');
   <p>{date}</p>
   <p id='body-paragraph'> <Link to={`/articles/${singleArticle.article_id}/comments`}>Comments</Link></p> 
 
-
+<PostComments/>
 
 <Votes votes={singleArticle.votes}/>
+ 
+<Votes votes={singleArticle.votes}  singleArticleID = {article_id}/>
 <Comments singleArticleID={article_id} />
+
   </section>
  );
 };
