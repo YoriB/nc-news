@@ -20,7 +20,7 @@ const decVotes = () => {
 return (
   <div>
     <button disabled={voteChange ===1}  onClick={() => incVotes()}>Like</button>
-    <span>{votes + voteChange}</span>
+    <span>{voteChange}</span>
     <button disabled={voteChange ===-1} onClick={() => decVotes()}>Unlike</button>
   </div>
 )

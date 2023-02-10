@@ -4,6 +4,7 @@ import Articles from './components/Articles';
 import {Routes, Route} from 'react-router-dom';
 import './App.css';
 import SingleArticle from './components/SingleArticle';
+import CommentsAdder from './components/CommentsAdder';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
     <Route path='/' element={<Articles/>}></Route>
     <Route path='/articles' element={<Articles/>}></Route>
     <Route path="/articles/:article_id" element={<SingleArticle/>}></Route>
+    {/* <Route path="/CommentsAdder" element={<CommentsAdder />}></Route> */}
 
    </Routes> 
     </div>

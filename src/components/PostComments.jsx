@@ -3,37 +3,42 @@ import { postCommentApi } from '../utils/api';
 
  
 
-const PostComments = () => {
+const PostComments = ({singleArticleID}) => {
+  
 
+const [body, setBody] = useState('');
+const [buttonDisabled, setButtonDisabled] = useState(false);
 
-const [newComment, setNewComment] = useState('');
 
 const handleSubmit = (event) => {
- 
-  event.preventDefault();
+  setButtonDisabled(true);
+  event.preventDefault(); 
+  
+
+  postCommentApi(body, singleArticleID)
+  setButtonDisabled(false);     
+}
 
 
-   
-  
-  
 
 return (
-  <section>
-    <form onSubmit={handleSubmit} className='new Comment'>
-    <label htmlFor='new Comment'>Post a Comment</label>
-    <textarea
-    id='new Comment'
-    value={newComment}
-    onChange={(event) => setNewComment(event.target.value)}
-    ></textarea>
-    <button>Post</button>
-  </form>
- 
-  </section>
+  <section>  
+  <form onSubmit={handleSubmit}> 
+        
+        <label htmlFor=' comment'>Post Comment </label>
+        <textarea
+        id = 'comment'
+          type="text"
+          placeholder="write comment here"
+         
+          onChange={(event) => setBody(event.target.value)}
+        />     
+     <button disabled={buttonDisabled} type='submit'> Post</button>
+      </form>
+  </section>  
 )
+}
 
-}
-}
 
 export default PostComments;
 

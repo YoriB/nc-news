@@ -1,7 +1,9 @@
 import {useEffect, useState} from 'react';
 import '../App.css';
 import { getComments } from '../utils/api';
+import CommentsAdder from './CommentsAdder';
 import PostComments from './PostComments';
+
 
 const dayjs = require('dayjs')
 
@@ -20,11 +22,8 @@ const [comments, setComments] = useState([]);
   
   return (
 <section>
-<PostComments/>
-
+<PostComments singleArticleID={singleArticleID} setComments ={setComments}/>
 <h2 id="underlined">COMMENTS SECTION</h2>
-
-
 <ul className="">
       {comments.map((comment) => {
           
