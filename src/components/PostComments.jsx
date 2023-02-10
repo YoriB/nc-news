@@ -12,10 +12,9 @@ const handleSubmit = (event) => {
  
   event.preventDefault();
 
-  postCommentApi(newComment).then((fromCommentApi) => {
-    setNewComment((currComments) => [...currComments, fromCommentApi])
+
    
-  })
+  
   
 
 return (

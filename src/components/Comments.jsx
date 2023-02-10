@@ -20,6 +20,7 @@ const [comments, setComments] = useState([]);
   
   return (
 <section>
+<PostComments/>
 
 <h2 id="underlined">COMMENTS SECTION</h2>
 
