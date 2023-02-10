@@ -6,13 +6,13 @@ const articlesAPI = axios.create({
 
 export const getArticlesApi = () => {
   return articlesAPI.get('/articles').then(({ data }) => {
-    console.log(data);
+  
     return data;
   });
 };
 
 export const getArticleByIdApi = (article_id) => {
- console.log(article_id);
+
 return articlesAPI.get(`/articles/${article_id}`).then(({ data }) => {
 
 return data;
@@ -32,6 +32,7 @@ export const patchArticleApi = (id, votes) => {
 
 
 return articlesAPI.patch(`/articles/${id}`, { inc_votes : votes }).then(data => {
-  return data;
+  console.log(data.data);
+  return data.data;
 });
 }
