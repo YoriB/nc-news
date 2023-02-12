@@ -2,31 +2,48 @@
 import {getArticlesApi} from '../utils/api';
 import '../App.css';
 import {Link} from 'react-router-dom';
+import Topics from './Topics';
+import axios from 'axios';
+
 
 
 const Articles = () => { 
   const [articles, setArticles] = useState([]); 
+  const [topics, setTopics] = useState(''); 
+ 
 
   const [isLoading, setIsLoading] = useState(true);   
   
     useEffect(() => {    
       getArticlesApi().then((articlesFromApi) => {
         setIsLoading(false);
-      setArticles(articlesFromApi);
+      setArticles(articlesFromApi);    
       });
-    },[])
+    
+
+   if(topics!== ''){
+   axios.get(`https://yoris-nc-news.onrender.com/api/articles${topics}`).then(({data}) => {
+  
+   setArticles(data);  
+    })  
+  }
+},[topics]);    
 
     if (isLoading) {
       return<p>LOADING...</p>;
-    }
-  
+    } 
+
+    
 return (
   <section>
+    <Topics setTopics={setTopics} />
+  
     <h2>LIST OF ARTICLES</h2>
     <ul className="">
       {articles.map((article) => {
+        
 return (
-  <li className = "article count" key={article.article_id}>
+  <li className = "article count" key={+article.article_id}>
     <h2>
       <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
     </h2>   

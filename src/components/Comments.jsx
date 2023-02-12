@@ -16,7 +16,6 @@ const Comments =({singleArticleID}) => {
 }
 },[]);
 
-
   
   return (
 <section>
