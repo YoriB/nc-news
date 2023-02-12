@@ -1,44 +1,58 @@
 import {useState} from 'react';
 import { postCommentApi } from '../utils/api';
 
- 
 
-const PostComments = ({singleArticleID}) => {
-  
+const PostComments = ({singleArticleID, setComments}) => {
 
 const [body, setBody] = useState('');
-const [buttonDisabled, setButtonDisabled] = useState(false);
-
+const [isCommentSubmitted, setIsCommentSubmitted] = useState();
+const [isDisabled, setIsDisabled] = useState(false);
 
 const handleSubmit = (event) => {
-  setButtonDisabled(true);
-  event.preventDefault(); 
-  
 
-  postCommentApi(body, singleArticleID)
-  setButtonDisabled(false);     
+event.preventDefault(); 
+
+
+if (body) {
+  // form is valid, submit the form 
+  setIsCommentSubmitted(true);
+  setIsDisabled(true);
+} else {
+  // form is invalid, display an error message
+ 
 }
 
 
 
+postCommentApi(body, singleArticleID).then(commentsFromApi => {
+  setComments((currComments) => [...currComments, commentsFromApi]); 
+ 
+})
+}
+
 return (
-  <section>  
-  <form onSubmit={handleSubmit}> 
-        
-        <label htmlFor=' comment'>Post Comment </label>
-        <textarea
-        id = 'comment'
-          type="text"
-          placeholder="write comment here"
-         
-          onChange={(event) => setBody(event.target.value)}
-        />     
-     <button disabled={buttonDisabled} type='submit'> Post</button>
-      </form>
-  </section>  
+<section> 
+<form onSubmit={handleSubmit}> 
+<label htmlFor=' comment'>Post Comment </label>
+<textarea
+id = 'comment-box'
+rows = '6'
+type="text"
+placeholder="write comment here"
+onChange={(event) => setBody(event.target.value)}
+/> 
+<button disabled={isDisabled} type="submit">Post</button>
+{isCommentSubmitted && <p>Form submitted successfully</p>}
+{!isCommentSubmitted && <p>Please enter a comment</p>}
+
+</form>
+</section> 
 )
 }
 
-
 export default PostComments;
+
+
+
+
 
