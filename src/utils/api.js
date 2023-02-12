@@ -32,7 +32,14 @@ return data.data;
 
 export const getTopicsApi = (topics) => {
   return articlesAPI.get(`/topics`).then(({ data }) => {
-  return data
-  ;
+  return data  
 })
+}
+
+
+export const getSortApi = (sortBy, ASC, comment_count) => {
+  return articlesAPI.get(`/articles`, {params: {sort_by: sortBy, order : ASC, comment_count : comment_count}}).then(({ data }) => {
+  
+    return data
+  })
 }
