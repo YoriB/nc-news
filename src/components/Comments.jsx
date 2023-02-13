@@ -6,7 +6,7 @@ const dayjs = require('dayjs')
 const Comments =({singleArticleID}) => {
   
   const [comments, setComments] = useState([]);
-  
+  const [deleteComment, setDeleteComment] = useState(false);
 
   useEffect(() => {
     if (singleArticleID) {
@@ -32,6 +32,7 @@ return (
 <p>{date}</p>
 
 <button>Like</button><span> {comment.votes} </span><button>Unlike</button>
+<button onClick={() => handleDelete(comment.comment_id)}>Delete</button>
 </li>
 )
 })}
