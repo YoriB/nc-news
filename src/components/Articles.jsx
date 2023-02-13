@@ -1,5 +1,5 @@
  import { useState, useEffect } from 'react';
-import {getArticlesApi} from '../utils/api';
+import {getArticlesApi, getSortApi} from '../utils/api';
 import '../App.css';
 import {Link} from 'react-router-dom';
 import Topics from './Topics';
@@ -30,8 +30,14 @@ const Articles = () => {
   }
 },[topics]);  
 
+
+getSortApi(sortValue).then((articlesFromApi) => {
+  setArticles(articlesFromApi);
+},[sortValue]);
+
+
 const handleSorting = (event) => {setSortValue(event.target.value)}
-console.log(sortValue)
+
 
     if (isLoading) {
       return <p> LOADING...</p>;
@@ -41,8 +47,8 @@ console.log(sortValue)
 return (
   <section>
     <Topics setTopics={setTopics} />
-
-    <select onChange={(event)=> handleSorting(event)}>
+    <label htmlFor="sort-select">Sort by:</label>
+    <select value={sortValue} onChange={(event)=> handleSorting(event)}>
       <option disabled>sort_by</option>
       <option value='created_at'>date</option>
       <option value='votes'>votes</option>
@@ -58,12 +64,12 @@ return (
 return (
   <li className = "article count" key={+article.article_id}>
     <h2>
-      <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
+      <Link to={`/articles/${+article.article_id}`}>{article.title}</Link>
     </h2>   
     <img src={article.article_img_url} alt={article.title} ></img>     
     <p >{(article.body.length <= 30)? article.body : article.body.split(' ').slice(0, 30).join(' ').concat('......')}</p>
     <p>Comments: {article.comment_count}</p>
-    <p> Likes  :  {article.votes }</p>
+    <p> Likes  :  {article.votes }</p>    
     <p>{date}</p>    
     </li>
     )

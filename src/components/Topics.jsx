@@ -1,10 +1,9 @@
 
 import {Link} from 'react-router-dom';
-import {useState} from 'react';
 
 
-const Topics = ({setTopics}) => { 
- 
+
+const Topics = ({setTopics}) => {  
 
   const handleListAll = () => setTopics('')
   const handleCooking = () => setTopics('?topic=cooking')
