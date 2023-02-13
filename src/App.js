@@ -4,6 +4,7 @@ import Articles from './components/Articles';
 import {Routes, Route} from 'react-router-dom';
 import './App.css';
 import SingleArticle from './components/SingleArticle';
+import Topics from './components/Topics';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
     <Route path='/' element={<Articles/>}></Route>
     <Route path='/articles' element={<Articles/>}></Route>
     <Route path="/articles/:article_id" element={<SingleArticle/>}></Route>
-    <Route path="/topics/:topics" element={<h1>404</h1>}></Route>
+    <Route path="/topics/:topics" element={<Topics/>}></Route>
 
    </Routes> 
     </div>

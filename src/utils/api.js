@@ -5,16 +5,13 @@ const articlesAPI = axios.create({
 });
 
 export const getArticlesApi = () => {
-  return articlesAPI.get('/articles').then(({ data }) => {
-    console.log(data);
+  return articlesAPI.get('/articles').then(({ data }) => {    
     return data;
   });
 };
 
 export const getArticleByIdApi = (article_id) => {
- console.log(article_id);
 return articlesAPI.get(`/articles/${article_id}`).then(({ data }) => {
-console.log(data);
 return data;
   });
 };
@@ -29,15 +26,16 @@ export const getComments = (article_id) => {
 
 export const patchArticleApi = (id, votes) => {  
 return articlesAPI.patch(`/articles/${id}`, { inc_votes : votes }).then(data => {
-  return data.data;
+return data.data;
 });
 }
 
-// export const getTopicsApi = (topics) => {
-//   return articlesAPI.get(`/topics`).then(({ data }) => {
-//   return data  
-// })
-// }
+export const getTopicsApi = (topics) => { 
+  return articlesAPI.get(`/articles/${topics}`).then(({data }) => {
+
+  return data  
+})
+}
 
 
 export const getSortApi = (sort_by) => {
