@@ -14,7 +14,7 @@ const Comments =({singleArticleID}) => {
       setComments(CommentsFromArticle);    
   });
 }
-},[]);
+});
 
   
   return (
