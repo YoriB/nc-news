@@ -14,7 +14,7 @@ function App() {
     <Route path='/' element={<Articles/>}></Route>
     <Route path='/articles' element={<Articles/>}></Route>
     <Route path="/articles/:article_id" element={<SingleArticle/>}></Route>
-    <Route path="/articles/:article_id/comments" element={<PostComments/>}></Route>
+    <Route path="/topics/:topics" element={<h1>404</h1>}></Route>
 
    </Routes> 
     </div>
