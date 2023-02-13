@@ -6,15 +6,15 @@ const articlesAPI = axios.create({
 
 export const getArticlesApi = () => {
   return articlesAPI.get('/articles').then(({ data }) => {
-    console.log(data);
+  
     return data;
   });
 };
 
 export const getArticleByIdApi = (article_id) => {
- console.log(article_id);
+
 return articlesAPI.get(`/articles/${article_id}`).then(({ data }) => {
-console.log(data);
+
 return data;
   });
 };
@@ -32,6 +32,10 @@ export const patchArticleApi = (id, votes) => {
 
 
 return articlesAPI.patch(`/articles/${id}`, { inc_votes : votes }).then(data => {
+<<<<<<< HEAD
+=======
+  console.log(data.data);
+>>>>>>> 3881fe49f1a40ecfa3ba5f4da4ff0c23558fd14c
   return data.data;
 });
 }
