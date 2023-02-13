@@ -21,9 +21,8 @@ const Articles = () => {
       });
     
 
-   if(topics!== ''){
-    getTopicsApi(topics).then((topicsFromApi) => {
-  
+   if(topics !== ''){
+    getTopicsApi(topics).then((topicsFromApi) => {  
    setArticles(topicsFromApi);  
     })  
   }
@@ -66,7 +65,7 @@ return (
     </h2>   
     <img src={article.article_img_url} alt={article.title} ></img>     
     <p >{(article.body.length <= 30)? article.body : article.body.split(' ').slice(0, 30).join(' ').concat('......')}</p>
-    <p>Comments: {article.comment_count}</p>
+    <p>Comments: {(+article.comment_count)}</p>
     <p> Likes  :  {article.votes }</p>    
     <p>{date}</p>    
     </li>
