@@ -1,5 +1,5 @@
 const Nav = () => {
-  return <nav className="Nav">Nav</nav>
+  return <nav className="Nav"></nav>
   
 }
 
