@@ -1,9 +1,8 @@
  import { useState, useEffect } from 'react';
-import {getArticlesApi, getSortApi} from '../utils/api';
+import {getArticlesApi, getSortApi, getTopicsApi} from '../utils/api';
 import '../App.css';
 import {Link} from 'react-router-dom';
 import Topics from './Topics';
-import axios from 'axios'
 const dayjs = require('dayjs');
 
 
@@ -23,13 +22,12 @@ const Articles = () => {
     
 
    if(topics!== ''){
-   axios.get(`https://yoris-nc-news.onrender.com/api/articles${topics}`).then(({data}) => {
+    getTopicsApi(topics).then((topicsFromApi) => {
   
-   setArticles(data);  
+   setArticles(topicsFromApi);  
     })  
   }
 },[topics]);  
-
 
 getSortApi(sortValue).then((articlesFromApi) => {
   setArticles(articlesFromApi);

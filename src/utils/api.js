@@ -30,11 +30,12 @@ return data.data;
 });
 }
 
-// export const getTopicsApi = (topics) => {
-//   return articlesAPI.get(`/topics`).then(({ data }) => {
-//   return data  
-// })
-// }
+export const getTopicsApi = (topics) => { 
+  return articlesAPI.get(`/articles/${topics}`).then(({data }) => {
+
+  return data  
+})
+}
 
 
 export const getSortApi = (sort_by) => {
