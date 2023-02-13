@@ -4,7 +4,7 @@ import { getArticleByIdApi } from '../utils/api';
 import {Link} from 'react-router-dom';
 import Comments from './Comments';
 import Votes from './Votes';
-import { useNavigate } from 'react-router-dom';
+
 const dayjs = require('dayjs')
 
 
@@ -12,7 +12,7 @@ const SingleArticle = () => {
 const {article_id}  = useParams()
   const [singleArticle, setSingleArticle] = useState({});
 
-  const navigate = useNavigate();
+ 
 
   useEffect(() => {   
      
@@ -32,7 +32,7 @@ const {article_id}  = useParams()
           src={singleArticle.article_img_url}
           alt={singleArticle.title}
         ></img>
-        <button className="btn btn-outline-primary" onClick={(e)=>{navigate('/PostComments',{state:{singleArticle}})} }>Comment</button>
+      
      
   <p>
   {singleArticle.body}
