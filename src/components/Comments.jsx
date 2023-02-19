@@ -4,6 +4,7 @@ import { getComments } from '../utils/api';
 const dayjs = require('dayjs')
 
 const Comments =({singleArticleID}) => {
+  console.log(singleArticleID)
   
   const [comments, setComments] = useState([]);
   const [deleteComment, setDeleteComment] = useState(false);
