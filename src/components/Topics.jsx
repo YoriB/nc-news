@@ -1,15 +1,10 @@
+import { Link } from "react-router-dom";
 
-import {Link} from 'react-router-dom';
-
-
-
-const Topics = ({setTopics}) => {  
-
-  const handleListAll = () => setTopics('')
-  const handleCooking = () => setTopics('?topic=cooking')
-  const handleCoding = () => setTopics('?topic=coding')
-  const handleFootball = () => setTopics('?topic=football')
-
+const Topics = ({ setTopics }) => {
+  const handleListAll = () => setTopics("");
+  const handleCooking = () => setTopics("cooking");
+  const handleCoding = () => setTopics("coding");
+  const handleFootball = () => setTopics("football");
 
   return (
     <section>
@@ -30,56 +25,3 @@ const Topics = ({setTopics}) => {
 };
 
 export default Topics;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

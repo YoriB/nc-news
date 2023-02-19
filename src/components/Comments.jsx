@@ -1,46 +1,60 @@
-import {useEffect, useState} from 'react';
-import '../App.css';
-import { getComments } from '../utils/api';
-const dayjs = require('dayjs')
+import { useEffect, useState } from "react";
+import "../App.css";
+import { getComments } from "../utils/api";
+import { deleteCommentApi } from "../utils/api";
+const dayjs = require("dayjs");
 
-const Comments =({singleArticleID}) => {
-  console.log(singleArticleID)
-  
+const Comments = ({ singleArticleID }) => {
+  // console.log(singleArticleID);
+
   const [comments, setComments] = useState([]);
-  const [deleteComment, setDeleteComment] = useState(false);
+  // const [deleteComment, setDeleteComment] = useState(false);
 
   useEffect(() => {
     if (singleArticleID) {
-    getComments(singleArticleID).then((CommentsFromArticle) => {     
-      setComments(CommentsFromArticle);    
-  });
-}
-},[]);
+      getComments(singleArticleID).then((CommentsFromArticle) => {
+        setComments(CommentsFromArticle);
+      });
+    }
+  }, []);
 
-  
+  const handleDelete = (comment_id) => {
+    const newComments = comments.filter(
+      (comment) => comment.comment_id !== comment_id
+    );
+    deleteCommentApi(comment_id);
+    setComments(newComments);
+    // setDeleteComment(newComments);
+    // console.log(deleteComment);
+  };
+
   return (
-<section>
-<h2 id="underlined">COMMENTS SECTION</h2>
+    <section>
+      <h2 id="underlined">COMMENTS SECTION</h2>
 
-<ul className="">
-      {comments.map((comment) => {
-          
-const date = dayjs(comment.created_at).format('MMMM DD YYYY, hh:mm:ss a');
-return (
-  <li className = "comment-box" key={comment.comment_id}>
-<p>{comment.author}</p>
-<p>{comment.body}</p>
-<p>{date}</p>
+      <ul className="">
+        {comments.map((comment) => {
+          const date = dayjs(comment.created_at).format(
+            "MMMM DD YYYY, hh:mm:ss a"
+          );
+          return (
+            <li className="comment-box" key={comment.comment_id}>
+              <p>{comment.author}</p>
+              <p>{comment.body}</p>
+              <p>{date}</p>
 
-<button>Like</button><span> {comment.votes} </span><button>Unlike</button>
-<button onClick={() => handleDelete(comment.comment_id)}>Delete</button>
-</li>
-)
-})}
-</ul>   
-        
-</section>
-  )
-}
+              <button>Like</button>
+              <span> {comment.votes} </span>
+              <button>Unlike</button>
+              <button onClick={() => handleDelete(comment.comment_id)}>
+                Delete
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+};
 
 export default Comments;
