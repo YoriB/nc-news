@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import '../App.css';
-import { getComments } from '../utils/api';
+import { getComments, deleteCommentApi} from '../utils/api';
 const dayjs = require('dayjs')
 
 const Comments =({singleArticleID}) => {
@@ -16,6 +16,15 @@ const Comments =({singleArticleID}) => {
   });
 }
 },[]);
+const handleDelete = (comment_id) => { 
+  
+  const newComments = comments.filter(comment => comment.comment_id !== comment_id)  
+ 
+    deleteCommentApi(comment_id).setDeletedComment(newComments)
+    setDeleteComment(newComments);  
+    console.log(deleteComment);
+   
+ }
 
   
   return (
@@ -32,7 +41,7 @@ return (
 <p>{comment.body}</p>
 <p>{date}</p>
 
-<button>Like</button><span> {comment.votes} </span><button>Unlike</button>
+<p>Likes : {comment.votes}</p>
 <button onClick={() => handleDelete(comment.comment_id)}>Delete</button>
 </li>
 )

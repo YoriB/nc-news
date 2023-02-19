@@ -43,3 +43,7 @@ export const getSortApi = (sort_by) => {
     return data
   })
 }
+
+export const deleteCommentApi = (comment_id) => {
+  return articlesAPI.delete(`/comments/${comment_id}`)
+}
