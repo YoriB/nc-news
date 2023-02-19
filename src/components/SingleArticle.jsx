@@ -36,9 +36,6 @@ const date = dayjs(singleArticle.created_at).format('MMMM DD YYYY, hh:mm:ss a');
   <p>{singleArticle.author}</p>
   <p>{date}</p>
   <p id='body-paragraph'> <Link to={`/articles/${singleArticle.article_id}/comments`}>Comments</Link></p> 
-
-
-
 <Votes votes={singleArticle.votes}  singleArticleID = {article_id}/>
 <Comments singleArticleID={article_id} />
   </section>

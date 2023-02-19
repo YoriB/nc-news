@@ -30,6 +30,7 @@ const Articles = () => {
 },[topics]);  
 
 
+
 getSortApi(sortValue).then((articlesFromApi) => {
   setArticles(articlesFromApi);
 },[sortValue]);
@@ -69,7 +70,7 @@ return (
     <p >{(article.body.length <= 30)? article.body : article.body.split(' ').slice(0, 30).join(' ').concat('......')}</p>
     <p>Comments: {article.comment_count}</p>
     <p> Likes  :  {article.votes }</p>    
-    <p>{date}</p>    
+    <p>Published : {date}</p>    
     </li>
     )
 })}

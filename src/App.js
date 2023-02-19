@@ -4,6 +4,8 @@ import Articles from './components/Articles';
 import {Routes, Route} from 'react-router-dom';
 import './App.css';
 import SingleArticle from './components/SingleArticle';
+import PostComments from './components/PostComments';
+import Topics from './components/Topics';
 
 function App() {
   return (
@@ -15,7 +17,8 @@ function App() {
     <Route path='/articles' element={<Articles/>}></Route>
     <Route path="/articles/:article_id" element={<SingleArticle/>}></Route>
     <Route path="/articles/:article_id/comments" element={<PostComments/>}></Route>
-    <Route path="/articles/:topics" element={<Comment/>}></Route>
+    <Route path="/articles/?topics=topic" element={<Topics/>}></Route>
+  
 
    </Routes> 
     </div>
