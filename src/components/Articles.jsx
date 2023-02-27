@@ -1,42 +1,44 @@
-import { useState, useEffect } from 'react';
-import { getArticlesApi, getSortApi } from '../utils/api';
-import '../App.css';
-import { Link } from 'react-router-dom';
-import Topics from './Topics.jsx';
-import axios from 'axios';
-const dayjs = require('dayjs');
+import { useState, useEffect } from "react";
+import { getArticlesApi, getSortApi, getTopicsApi } from "../utils/api";
+import "../App.css";
+import { Link } from "react-router-dom";
+import Topics from "./Topics";
+const dayjs = require("dayjs");
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
-  const [topics, setTopics] = useState('');
-  const [sortValue, setSortValue] = useState('created_at');
+  const [topics, setTopics] = useState("");
+  const [sortValue, setSortValue] = useState("created_at");
+  const [order, setOrder] = useState("DESC");
 
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getArticlesApi().then((articlesFromApi) => {
+    getArticlesApi(topics, sortValue, order).then((articlesFromApi) => {
       setIsLoading(false);
       setArticles(articlesFromApi);
     });
 
-    if (topics !== '') {
-      axios
-        .get(`https://yoris-nc-news.onrender.com/api/articles${topics}`)
-        .then(({ data }) => {
-          setArticles(data);
-        });
-    }
-  }, [topics]);
+    // if (topics !== "") {
+    //   getTopicsApi(topics).then((topicsFromApi) => {
+    //     setArticles(topicsFromApi);
+    //   });
+    // }
+  }, [topics, sortValue, order]);
 
-  getSortApi(sortValue).then(
-    (articlesFromApi) => {
-      setArticles(articlesFromApi);
-    },
-    [sortValue]
-  );
+  // getSortApi(sortValue).then(
+  //   (articlesFromApi) => {
+  //     setArticles(articlesFromApi);
+  //   },
+  //   [sortValue]
+  // );
 
   const handleSorting = (event) => {
     setSortValue(event.target.value);
+  };
+
+  const handleOrder = (event) => {
+    setOrder(event.target.value);
   };
 
   if (isLoading) {
@@ -51,14 +53,18 @@ const Articles = () => {
         <option disabled>sort_by</option>
         <option value="created_at">date</option>
         <option value="votes">votes</option>
-        <option value="comment_count">comment_count</option>
+        <option value="title">title</option>
+      </select>
+      <select value={order} onChange={(event) => handleOrder(event)}>
+        <option value="DESC">desc</option>
+        <option value="ASC">asc</option>
       </select>
 
       <h2>LIST OF ARTICLES</h2>
       <ul className="">
         {articles.map((article) => {
           const date = dayjs(article.created_at).format(
-            'MMMM DD YYYY, hh:mm:ss a'
+            "MMMM DD YYYY, hh:mm:ss a"
           );
 
           return (
@@ -73,10 +79,10 @@ const Articles = () => {
                 {article.body.length <= 30
                   ? article.body
                   : article.body
-                      .split(' ')
+                      .split(" ")
                       .slice(0, 30)
-                      .join(' ')
-                      .concat('......')}
+                      .join(" ")
+                      .concat("......")}
               </p>
               <p>Comments: {article.comment_count}</p>
               <p> Likes : {article.votes}</p>

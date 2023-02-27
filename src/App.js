@@ -4,11 +4,13 @@ import Articles from './components/Articles';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import SingleArticle from './components/SingleArticle';
-import PostComments from './components/PostComments';
+import Topics from './components/Topics';
+
 
 function App() {
   return (
     <div className="App">
+
       <Header />
       <Nav />
       <Routes>

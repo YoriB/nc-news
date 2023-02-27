@@ -50,6 +50,10 @@ const {article_id}  = useParams()
 <Comments singleArticleID={article_id} singleArticle={singleArticle} />
 
 
+
+<Votes votes={singleArticle.votes}  singleArticleID = {article_id}/>
+<Comments singleArticleID={article_id} />
+
   </section>
  );
 };

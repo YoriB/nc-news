@@ -1,13 +1,19 @@
-import axios from 'axios';
+import axios from "axios";
 
 const articlesAPI = axios.create({
-  baseURL: 'https://yoris-nc-news.onrender.com/api',
+  baseURL: "https://yoris-nc-news.onrender.com/api/",
 });
 
-export const getArticlesApi = () => {
-  return articlesAPI.get('/articles').then(({ data }) => {
-    return data;
-  });
+
+export const getArticlesApi = (topics, sortValue, order) => {
+  return articlesAPI
+    .get("/articles", {
+      params: { topic: topics, sort_by: sortValue, order: order },
+    })
+    .then(({ data }) => {
+      return data;
+    });
+
 };
 
 export const getArticleByIdApi = (article_id) => {
@@ -24,15 +30,6 @@ export const getComments = (article_id) => {
     });
 };
 
-export const patchArticleApi = (article_id, votes) => {
-  return articlesAPI
-    .patch(`/articles/${article_id}`, { inc_votes: votes })
-    .then((data) => {
-      return data.data;
-    });
-};
-
-
 
 export const postCommentApi = (body, singleArticleID) => {
   const newComment = {
@@ -41,6 +38,23 @@ export const postCommentApi = (body, singleArticleID) => {
     }
   ;
   return articlesAPI.post(`/articles/${singleArticleID}/comments`, newComment);
+
+
+export const patchArticleApi = (id, votes) => {
+  return articlesAPI
+    .patch(`/articles/${id}`, { inc_votes: votes })
+    .then((data) => {
+      return data.data;
+    });
+
 };
 
+export const deleteCommentApi = (comment_id) => {
+  return articlesAPI.delete(`/comments/${comment_id}`);
+};
+// export const getSortApi = (sort_by) => {
+//   return articlesAPI.get(`/articles?sort_by=${sort_by}`).then(({ data }) => {
+//     return data;
+//   });
+// };
 
