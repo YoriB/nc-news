@@ -1,22 +1,82 @@
 .App {
   text-align: center;
+  font-size: 15px;
 }
 
 li {
-  list-style-type : none;
-
+  list-style-type: none;
 }
-
 
 .comment-box {
   border: 1px solid black;
   padding: 10px;
-  margin: 15px; 
+  margin: 15px;
 }
 
-#underlined{
-  text-decoration: underline !important;  
+#underlined {
+  text-decoration: underline !important;
+}
 
+.header {
+  background-color: darkblue;
+  color: white;
+  font-weight: bold;
+  font-size: 80px;
+  height: 100px;
+}
+
+.header-buttons {
+  width: 250px;
+  height: 50px;
+  padding: 5px 10px;
+  font-size: 30px;
+  margin-right: 10px;
+  display: inline-block;
+  align-items: center;
+}
+
+.header-button {
+  width: 100px;
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 15px;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  align-items: center;
+}
+
+.article-ul {
+  column-count: 2;
+  float: left;
+  position: relative;
+  margin-right: 20px;
+}
+
+
+.comments-button {
+  border-radius: 5px;
+  color: darkblue; 
+}
+
+.topics-header {
+  display: flex;
+  align-items: centre;  
+  margin-left: 0.5rem;
+}
+
+.topics-header h2 {
+  font-size : 20px;
+  margin-right: 1rem;
+color : darkblue;
+}
+
+
+
+.title-text {
+  font-size: 17px;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .article img {

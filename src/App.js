@@ -9,14 +9,15 @@ import Topics from './components/Topics';
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Articles />}></Route>
-        <Route path="/articles" element={<Articles />}></Route>
-        <Route path="/articles/:article_id" element={<SingleArticle />}></Route>
- <Route path="/articles/:article_id/comments" element={<PostComments />}></Route>
-      </Routes>
+   <Header/>  
+   <Nav/>
+   <Routes>
+    <Route path='/' element={<Articles/>}></Route>
+    <Route path='/articles' element={<Articles/>}></Route>
+    <Route path="/articles/:article_id" element={<SingleArticle/>}></Route>
+    <Route path="/topics/:topics" element={<Topics/>}></Route>
+
+   </Routes> 
     </div>
   );
 }

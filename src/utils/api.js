@@ -30,6 +30,14 @@ export const getComments = (article_id) => {
     });
 };
 
+export const patchArticleApi = (article_id, votes) => {
+  return articlesAPI
+    .patch(`/articles/${article_id}`, { inc_votes: votes })
+    .then((data) => {
+      return data.data;
+    });
+};
+
 
 
 export const postCommentApi = (body, singleArticleID) => {
@@ -41,11 +49,8 @@ export const postCommentApi = (body, singleArticleID) => {
   return articlesAPI.post(`/articles/${singleArticleID}/comments`, newComment);
 };
 
-export const patchArticleApi = (id, votes) => {
-  return articlesAPI
-    .patch(`/articles/${id}`, { inc_votes: votes })
-    .then((data) => {
-      return data.data;
-    });
-};
 
+export const deleteCommentApi = (comment_id) => {
+  return articlesAPI.delete(`/comments/${comment_id}`)
+ 
+};
