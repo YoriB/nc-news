@@ -31,6 +31,7 @@ const SingleArticle = () => {
 
     
 
+<<<<<<< HEAD
     getArticleByIdApi(article_id, sortValue, order).then(
       (articleFromApiById) => {
         setSingleArticle(articleFromApiById);
@@ -41,6 +42,11 @@ const SingleArticle = () => {
   const date = dayjs(singleArticle.created_at).format(
     'MMMM DD YYYY, hh:mm:ss a'
   );
+=======
+<Votes votes={singleArticle.votes}/>
+ 
+<Votes votes={singleArticle.votes}  singleArticleID = {article_id}/>
+>>>>>>> c80940fe7cde757307883cbe01d74d5e3b91d55f
 
   const handleSorting = (event) => {
     setSortValue(event.target.value);
@@ -92,10 +98,19 @@ const SingleArticle = () => {
         </Link>
       </p> */}
 
+<<<<<<< HEAD
       <Votes votes={singleArticle.votes} singleArticleID={article_id} />
       <Comments topic={singleArticle.topic} singleArticleID={article_id}  currentUser={singleArticle.author}/>
     </section>
   );
+=======
+
+<Votes votes={singleArticle.votes}  singleArticleID = {article_id}/>
+<Comments singleArticleID={article_id} />
+
+  </section>
+ );
+>>>>>>> c80940fe7cde757307883cbe01d74d5e3b91d55f
 };
 
 
