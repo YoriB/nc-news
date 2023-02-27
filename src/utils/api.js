@@ -4,6 +4,7 @@ const articlesAPI = axios.create({
   baseURL: "https://yoris-nc-news.onrender.com/api/",
 });
 
+
 export const getArticlesApi = (topics, sortValue, order) => {
   return articlesAPI
     .get("/articles", {
@@ -12,6 +13,7 @@ export const getArticlesApi = (topics, sortValue, order) => {
     .then(({ data }) => {
       return data;
     });
+
 };
 
 export const getArticleByIdApi = (article_id) => {
@@ -28,18 +30,23 @@ export const getComments = (article_id) => {
     });
 };
 
+
+export const postCommentApi = (body, singleArticleID) => {
+  const newComment = {
+      username: 'grumpy19',
+      body: body,
+    }
+  ;
+  return articlesAPI.post(`/articles/${singleArticleID}/comments`, newComment);
+
+
 export const patchArticleApi = (id, votes) => {
   return articlesAPI
     .patch(`/articles/${id}`, { inc_votes: votes })
     .then((data) => {
       return data.data;
     });
-};
 
-export const getTopicsApi = (topics) => {
-  return articlesAPI.get(`/articles/${topics}`).then(({ data }) => {
-    return data;
-  });
 };
 
 export const deleteCommentApi = (comment_id) => {
@@ -50,3 +57,4 @@ export const deleteCommentApi = (comment_id) => {
 //     return data;
 //   });
 // };
+
