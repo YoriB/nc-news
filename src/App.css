@@ -18,3 +18,21 @@ li {
   text-decoration: underline !important;  
 
 }
+
+.article img {
+  width: 55%;
+  height: auto;
+}
+
+.article p.likes {
+  color: green;
+  font-weight: bold;
+}
+
+.date{
+  font-size : 11px;
+}
+
+.text-h2{
+  color : red;
+}
