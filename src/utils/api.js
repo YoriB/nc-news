@@ -30,7 +30,6 @@ return data.data;
 });
 }
 
-<<<<<<< HEAD
 export const getTopicsApi = (topics) => {
   return articlesAPI.get(`/topics`).then(({ data }) => {
   return data  
@@ -41,17 +40,6 @@ export const getTopicsApi = (topics) => {
 export const getSortApi = (sortBy, ASC, comment_count) => {
   return articlesAPI.get(`/articles`, {params: {sort_by: sortBy, order : ASC, comment_count : comment_count}}).then(({ data }) => {
   
-=======
-// export const getTopicsApi = (topics) => {
-//   return articlesAPI.get(`/topics`).then(({ data }) => {
-//   return data  
-// })
-// }
-
-
-export const getSortApi = (sort_by) => {
-  return articlesAPI.get(`/articles?sort_by=${sort_by}`).then(({ data }) => {  
->>>>>>> main
     return data
   })
 }
