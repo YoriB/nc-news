@@ -4,6 +4,7 @@ import { getArticleByIdApi } from '../utils/api';
 import Comments from './Comments';
 import Votes from './Votes';
 import Topics from './Topics';
+import PostComments from './PostComments';
 
 const dayjs = require('dayjs');
 
@@ -12,6 +13,7 @@ const SingleArticle = () => {
   const [singleArticle, setSingleArticle] = useState({});
   const [sortValue, setSortValue] = useState('created_at');
   const [order, setOrder] = useState('DESC');
+
  
   
 
@@ -49,6 +51,9 @@ const SingleArticle = () => {
   const handleOrder = (event) => {
     setOrder(event.target.value);
   };
+
+  
+
   const currentDate = dayjs().format('MMMM DD YYYY, hh:mm:ss a');
 
   return (
@@ -93,6 +98,7 @@ const SingleArticle = () => {
       </p> */}
 
       <Votes votes={singleArticle.votes} singleArticleID={article_id} />
+      <PostComments singleArticleID={article_id}/>
       <Comments topic={singleArticle.topic} singleArticleID={article_id}  currentUser={singleArticle.author}/>
     </section>
   );

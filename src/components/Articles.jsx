@@ -1,5 +1,5 @@
  import { useState, useEffect } from 'react';
-import {getArticlesApi, getSortApi, getTopicsApi} from '../utils/api';
+import {getArticlesApi} from '../utils/api';
 import '../App.css';
 import {Link} from 'react-router-dom';
 import Topics from './Topics';
