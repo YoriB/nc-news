@@ -79,7 +79,7 @@ const Articles = () => {
         <option value="ASC">asc</option>
       </select>
 
-      <h2 id='text-h2'>LIST OF ARTICLES</h2>
+      <h2 id='underlined'>LIST OF ARTICLES</h2>
       <ul className="article-ul">
         {articles.map((article) => {
           const date = dayjs(article.created_at).format(
