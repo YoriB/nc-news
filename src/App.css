@@ -26,11 +26,11 @@ li {
 }
 
 .header-buttons {
-  width: 250px;
+  width: 350px;
   height: 50px;
   padding: 5px 10px;
   font-size: 30px;
-  margin-right: 10px;
+  margin-left: 50px;
   display: inline-block;
   align-items: center;
 }
@@ -47,7 +47,7 @@ li {
 }
 
 .article-ul {
-  column-count: 2;
+  column-count: 4;
   float: left;
   position: relative;
   margin-right: 20px;
@@ -94,5 +94,10 @@ color : darkblue;
 }
 
 .text-h2{
+  color : red;
+}
+
+
+.comment-instruction{
   color : red;
 }

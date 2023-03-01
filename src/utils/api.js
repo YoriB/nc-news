@@ -46,7 +46,9 @@ export const postCommentApi = (body, singleArticleID) => {
       body: body,
     }
   ;
-  return articlesAPI.post(`/articles/${singleArticleID}/comments`, newComment);
+  return articlesAPI.post(`/articles/${singleArticleID}/comments`, newComment).then((data) => {
+    return data.data;
+  });
 };
 
 

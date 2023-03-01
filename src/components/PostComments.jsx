@@ -5,13 +5,12 @@ import { postCommentApi } from '../utils/api';
 const PostComments = ({singleArticleID, setComments}) => {
 
 const [body, setBody] = useState('');
-const [isCommentSubmitted, setIsCommentSubmitted] = useState();
+const [isCommentSubmitted, setIsCommentSubmitted] = useState(false);
 const [isDisabled, setIsDisabled] = useState(false);
 
 const handleSubmit = (event) => {
 
 event.preventDefault(); 
-
 
 if (body) {
   // form is valid, submit the form 
@@ -22,16 +21,17 @@ if (body) {
  
 }
 
-
-
 postCommentApi(body, singleArticleID).then(commentsFromApi => {
-  setComments((currComments) => [...currComments, commentsFromApi]); 
+  
+  setComments((currComments) => [...currComments, commentsFromApi]).then(() => {  
  
+  });
 })
 }
 
 return (
 <section> 
+<h2 id="underlined">POST A COMMENT</h2>
 <form onSubmit={handleSubmit}> 
 <label htmlFor=' comment'>Post Comment </label>
 <textarea
@@ -42,8 +42,8 @@ placeholder="write comment here"
 onChange={(event) => setBody(event.target.value)}
 /> 
 <button disabled={isDisabled} type="submit">Post</button>
-{isCommentSubmitted && <p>Form submitted successfully</p>}
-{!isCommentSubmitted && <p>Please enter a comment</p>}
+{isCommentSubmitted && alert('Form submitted successfully')}
+{!isCommentSubmitted && <p className='comment-instruction'>Please enter a comment</p>}
 
 </form>
 </section> 

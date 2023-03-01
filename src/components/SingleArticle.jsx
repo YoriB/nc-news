@@ -4,6 +4,7 @@ import { getArticleByIdApi } from '../utils/api';
 import Comments from './Comments';
 import Votes from './Votes';
 import Topics from './Topics';
+import PostComments from './PostComments';
 
 const dayjs = require('dayjs');
 
@@ -12,6 +13,7 @@ const SingleArticle = () => {
   const [singleArticle, setSingleArticle] = useState({});
   const [sortValue, setSortValue] = useState('created_at');
   const [order, setOrder] = useState('DESC');
+
  
   
 
@@ -31,7 +33,6 @@ const SingleArticle = () => {
 
     
 
-<<<<<<< HEAD
     getArticleByIdApi(article_id, sortValue, order).then(
       (articleFromApiById) => {
         setSingleArticle(articleFromApiById);
@@ -42,11 +43,6 @@ const SingleArticle = () => {
   const date = dayjs(singleArticle.created_at).format(
     'MMMM DD YYYY, hh:mm:ss a'
   );
-=======
-<Votes votes={singleArticle.votes}/>
- 
-<Votes votes={singleArticle.votes}  singleArticleID = {article_id}/>
->>>>>>> c80940fe7cde757307883cbe01d74d5e3b91d55f
 
   const handleSorting = (event) => {
     setSortValue(event.target.value);
@@ -55,6 +51,9 @@ const SingleArticle = () => {
   const handleOrder = (event) => {
     setOrder(event.target.value);
   };
+
+  
+
   const currentDate = dayjs().format('MMMM DD YYYY, hh:mm:ss a');
 
   return (
@@ -98,19 +97,11 @@ const SingleArticle = () => {
         </Link>
       </p> */}
 
-<<<<<<< HEAD
       <Votes votes={singleArticle.votes} singleArticleID={article_id} />
+      <PostComments singleArticleID={article_id}/>
       <Comments topic={singleArticle.topic} singleArticleID={article_id}  currentUser={singleArticle.author}/>
     </section>
   );
-=======
-
-<Votes votes={singleArticle.votes}  singleArticleID = {article_id}/>
-<Comments singleArticleID={article_id} />
-
-  </section>
- );
->>>>>>> c80940fe7cde757307883cbe01d74d5e3b91d55f
 };
 
 
