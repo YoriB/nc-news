@@ -26,7 +26,7 @@ li {
 }
 
 .header-buttons {
-  width: 250px;
+  width: 200px;
   height: 50px;
   padding: 5px 10px;
   font-size: 30px;
@@ -53,25 +53,22 @@ li {
   margin-right: 20px;
 }
 
-
 .comments-button {
   border-radius: 5px;
-  color: darkblue; 
+  color: darkblue;
 }
 
 .topics-header {
   display: flex;
-  align-items: centre;  
+  align-items: centre;
   margin-left: 0.5rem;
 }
 
 .topics-header h2 {
-  font-size : 20px;
+  font-size: 20px;
   margin-right: 1rem;
-color : darkblue;
+  color: darkblue;
 }
-
-
 
 .title-text {
   font-size: 17px;
@@ -89,15 +86,14 @@ color : darkblue;
   font-weight: bold;
 }
 
-.date{
-  font-size : 11px;
+.date {
+  font-size: 11px;
 }
 
-.text-h2{
-  color : red;
+.text-h2 {
+  color: red;
 }
 
-
-.comment-instruction{
-  color : red;
+.comment-instruction {
+  color: red;
 }
